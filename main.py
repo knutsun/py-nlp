@@ -15,6 +15,7 @@ def print_menu():
 	print ("1. display set file")
 	print ("2. display files")
 	print ("3. metrics")
+	print ("4. commons")
 	print("\n")
 
 loop=True
@@ -46,6 +47,13 @@ while loop:
 		metrics = nlp.metrics(fileObj)	
 		print("\n")
 		input("Press Enter to continue")
-		
+
+	elif choice=='4':
+		os.system('cls')
+		metrics = nlp.commons(fileObj)	
+		print("\n")
+		input("Press Enter to continue")
+
+
 	else:
 		input("Invalid. Try again: ")
