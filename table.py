@@ -13,4 +13,5 @@ x.field_names = ["Dutch", "Occurrences"]
 for key in data.items():
 	x.add_row(key)
 
-print(x)
+with open('table.html', 'w') as f:
+	f.write(x.get_html_string())
