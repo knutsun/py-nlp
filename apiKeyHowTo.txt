@@ -1,0 +1,5 @@
+In powershell, enter the path to your apikey.json
+This will set the environment variable so the Google Cloud API will recognize your api request
+
+$env:GOOGLE_APPLICATION_CREDENTIALS="[PATH]"
+
