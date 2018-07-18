@@ -54,6 +54,14 @@ while loop:
 		print("\n")
 		input("Press Enter to continue")
 
+	elif choice=='5':
+		os.system('cls')
+		# translation = nlp.translate(fileObj)	
+		# print("\n")
+		# print(translation)
+		nlp.translate()
+		input("Press Enter to continue")
+
 
 	else:
 		input("Invalid. Try again: ")

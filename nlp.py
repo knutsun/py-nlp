@@ -11,6 +11,7 @@ import json
 from json2html import *
 import nlp
 from prettytable import PrettyTable
+import trans
 
 def inputFile(textFile):
 
@@ -60,18 +61,31 @@ def commons(fileObj):
 	tokens = nltk.tokenize.word_tokenize(fileObj)
 	tokens = [token for token in tokens if token not in en_stopws]
 	fd = nltk.FreqDist(tokens)
-	fdist = fd.most_common(200)
+	fdist = fd.most_common(100)
 
 	myDictionary = dict(fdist)
 	with open('dictionary.json', 'w') as f:
 		json.dump(myDictionary, f)
 
-	text_file = open("common200words.csv", "w")
+	text_file = open("common100words.csv", "w")
 	try:
-		for i in fdist:
-			text_file.write(str(i) + ',')
+
+		for i, c in myDictionary:
+			text_file.write(str(i) + ',' + '\n')
 
 	except Exception as e:
 		print(str(e))
 	text_file.close()
 
+def translate():
+	with open('common100words.csv') as csvfile:
+		readCSV = csv.reader(csvfile, delimiter=',')
+		index = 0
+		for row in readCSV:
+			print(row)
+			print(row[index])
+			translated = trans.translateText(row[index])
+			print(translated)
+
+
+	csvfile.close()
