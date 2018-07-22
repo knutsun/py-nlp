@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="table-responsive">
+				<h1>JSON data to HTML table</h1>
+				<br />
+
+				<table class="table table-bordered table-striped" id="translation_table">
+					<tr>
+						<th>Dutch</th>
+						<th>English</th>
+						<th>Occurrences</th>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</body>
+</html>
+
+<script>
+$(document).ready(function(){
+	$.getJSON("data.json", function(data){
+		var translation_data='';
+		$.each(data, function(key, value){
+			translation_data += '<tr>';
+			translation_data += '<td>' + value.Dutch + '</td>';
+			translation_data += '<td>' + value.English + '</td>';
+			translation_data += '<td>' + value.Occurrences + '</td>';
+			translation_data += '</tr>';
+		});
+		$('#translation_table').append(translation_data);
+	});
+
+});
+</script>
