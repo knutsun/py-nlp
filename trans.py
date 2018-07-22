@@ -4,13 +4,8 @@ from google.cloud import translate
 
 def translateText(text, target='en'):
 	translateClient = translate.Client()
-	output = translateClient.translate(text, target_language=target)
-	print(output['translatedText'])
-# 	print('Text: ', output['input'])
-# 	print('Translation: ', output['translatedText'])
-# 	# print('Detected source language: ', output['detectedSourceLanguage'])
-
-
-# # inputText = input("What to translate?: ")
-# # outputText = translateText(inputText)
-# print(outputText)
+	with open('test.csv', 'a+') as test:
+		output = translateClient.translate(text, target_language=target)
+		test.write(output['translatedText'] + '\n')
+		print(output['translatedText'])
+	

@@ -61,7 +61,7 @@ def commons(fileObj):
 	tokens = nltk.tokenize.word_tokenize(fileObj)
 	tokens = [token for token in tokens if token not in en_stopws]
 	fd = nltk.FreqDist(tokens)
-	fdist = fd.most_common(100)
+	fdist = fd.most_common(10)
 
 	myDictionary = dict(fdist)
 	with open('dictionary.json', 'w') as f:
@@ -70,7 +70,7 @@ def commons(fileObj):
 	text_file = open("common100words.csv", "w")
 	try:
 
-		for i, c in myDictionary:
+		for i in myDictionary:
 			text_file.write(str(i) + ',' + '\n')
 
 	except Exception as e:
@@ -84,8 +84,9 @@ def translate():
 		for row in readCSV:
 			print(row)
 			print(row[index])
-			translated = trans.translateText(row[index])
-			print(translated)
+			trans.translateText(row[index])
+			# csvfile.write(trans.translateText(row[index]))
+			# # print(translated)
 
 
 	csvfile.close()

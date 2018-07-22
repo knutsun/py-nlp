@@ -9,9 +9,12 @@ with open('dictionary.json', 'r') as f:
 
 x = PrettyTable()
 x.field_names = ["Dutch", "Occurrences"]
+x.format = True
 
 for key in data.items():
 	x.add_row(key)
 
-with open('table.html', 'w') as f:
-	f.write(x.get_html_string())
+with open('table.html', 'w') as file:
+	table = x.get_html_string(attributes={"id":"dictTable"})
+	file.write('<link rel="stylesheet" href="style.css">')
+	file.write(table)
