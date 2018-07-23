@@ -1,0 +1,11 @@
+Process:
+commonWords();
+	get common words
+	write to csv
+translate();
+	read common csv
+	write translations to diff csv
+concat();
+	concatenate common csv to translations csv
+csvToJSON();
+JSONToHTML();
